@@ -1,0 +1,48 @@
+############################################################
+###   Programmazione settimanale (file: program7d.txt)   ###
+############################################################
+# Le indicazioni sono da scrivere in questo modo:
+# Giorno Ora:Minuti Temperatura
+# separati da uno spazio.
+# Per diseguaglianza fra le lingue, i giorni della settimana
+# devono essere indicati numericamente: 1 lunedi, 2 martedi,
+# mercoledi, 4 giovedi, 5 venerdi, 6 sabato, 7 domenica.
+# Il file deve sempre essere ordinato per giorno/ore:minuti,
+# viene eseguito un riordino automatico se viene richiamata
+# l'editazione dal programma.
+# Le righe col commento "#", sono sempre riportate in alto,
+# prima della programmazione, nell'ordine in cui sono
+# ritrovate, ricorda il ritorno a capo se la scrivi come
+# ultima riga.
+1 06:00 19
+1 07:00 15
+1 17:00 19
+2 00:00 15
+2 06:00 19
+2 07:00 15
+2 23:00 19
+3 00:00 15
+3 06:00 19
+3 07:00 15
+3 17:00 19
+3 19:00 15
+3 23:00 19
+4 00:00 15
+4 06:00 19
+4 07:00 15
+4 23:00 19
+5 00:00 15
+5 06:00 19
+5 07:00 15
+5 17:00 19
+5 19:00 15
+5 23:00 19
+6 00:00 15
+6 06:00 19
+6 07:00 15
+6 23:00 19
+7 00:00 15
+7 06:00 19
+7 07:00 15
+7 23:00 19
+7 23:10 20

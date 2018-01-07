@@ -1,0 +1,31 @@
+Cronotermostato settimanale
+===========================
+
+$ gpio -v >> README
+Raspberry Pi Details:
+  Type: Model A+, Revision: 01, Memory: 256MB, Maker: Sony 
+  * Device tree is enabled.
+  *--> Raspberry Pi Model A Plus Rev 1.1
+  * This Raspberry Pi supports user-level GPIO access.
+
+Legge temperatura e umidita` dal sensore SHT20
+Visualizza su un piccolo display lcd 128x128 pixel (8 righe 16 colonne)
+Trasmette i valori via MQTT alla centralina "Livello 1"
+Gestisce un'uscita per comando riscaldamento
+
+Ho usato una generazione random di colori per i testi
+(per evitare un salvaschermo, visto che non intendo
+spegnere/accendere mai il display)
+
+Uso la GPIO con numerazione BCM non wPi
+e` il parametro "-g" dato al comando gpio
+
+T temperatura
+RH umidita`
+KA rele`
+
+
+Tasti:
+h, visualizza un piccolo help/promemoria
+v, visualizza programmazione odierna
+e, edita programmazione settimanalegpio version: 2.44
