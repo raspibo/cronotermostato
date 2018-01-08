@@ -71,21 +71,25 @@ while [[ $key != "q" ]]
         T=`sht20_t.sh`
         RH=`sht20_rh.sh`
         KA=`gpio -g read $KAin`
-        # Aggiorno/invio dati solo se i valori sono cambiati
-        if [[ $T != $Tmem ]]
+        # MQTT
+        if [[ $MQTTENABLE == "1" ]]
           then
-            mosquitto_pub -h level1 -t $TOPIC/Temperatura -m "{ \"ID\" : \"$IDT\", \"Valore\" : \"$T\" }"
-            Tmem=$T
-        fi
-        if [[ "$RH" != "$RHmem" ]]
-          then
-            mosquitto_pub -h level1 -t $TOPIC/Umidita -m "{ \"ID\" : \"$IDRH\", \"Valore\" : \"$RH\" }"
-            RHmem=$RH
-        fi
-        if [[ "$KA" != "$KAmem" ]]
-          then
-            mosquitto_pub -h level1 -t $TOPIC/Relay -m "{ \"ID\" : \"$IDKA\", \"Valore\" : \"$KA\" }"
-            KAmem=$KA
+            # Aggiorno/invio dati solo se i valori sono cambiati
+            if [[ $T != $Tmem ]]
+              then
+                mosquitto_pub -h $MQTTSERVER -t $TOPIC/Temperatura -m "{ \"ID\" : \"$IDT\", \"Valore\" : \"$T\" }"
+                Tmem=$T
+            fi
+            if [[ "$RH" != "$RHmem" ]]
+              then
+                mosquitto_pub -h $MQTTSERVER -t $TOPIC/Umidita -m "{ \"ID\" : \"$IDRH\", \"Valore\" : \"$RH\" }"
+                RHmem=$RH
+            fi
+            if [[ "$KA" != "$KAmem" ]]
+              then
+                mosquitto_pub -h $MQTTSERVER -t $TOPIC/Relay -m "{ \"ID\" : \"$IDKA\", \"Valore\" : \"$KA\" }"
+                KAmem=$KA
+            fi
         fi
         clear
         mvcursor.sh "1;1H"
@@ -142,11 +146,15 @@ while [[ $key != "q" ]]
           else
             gpio $GPIOTYPE write $KAout 0
         fi
-        ## Aggiorno/invio dati solo se i valori sono cambiati
-        if [[ "$Tset" != "$Tsetmem" ]]
+        # MQTT
+        if [[ "$MQTTENABLE" == "1" ]]
           then
-            mosquitto_pub -h level1 -t $TOPIC/Temperatura -m "{ \"ID\" : \"$IDSP\", \"Valore\" : \"$Tset\" }"
-            Tsetmem=$Tset
+            ## Aggiorno/invio dati solo se i valori sono cambiati
+            if [[ "$Tset" != "$Tsetmem" ]]
+              then
+                mosquitto_pub -h $MQTTSERVER -t $TOPIC/Temperatura -m "{ \"ID\" : \"$IDSP\", \"Valore\" : \"$Tset\" }"
+                Tsetmem=$Tset
+            fi
         fi
         secMemTermo=`date +%s`  # aggiorna variabile
     fi
