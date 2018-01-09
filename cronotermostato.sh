@@ -30,7 +30,7 @@
 # Carico la configurazione
 # il lampeggio non funziona, per  qualche strano motivo legato a configurazioni di terminale
 cecho.sh "5" "Loading config .."
-source cronotermostato.conf
+source $CFGFILE
 sleep 1
 
 # Prevedo queste variabili perche` sono usate in vari parti del programma 
@@ -198,6 +198,19 @@ while [[ $key != "q" ]]
         done < $PRGFILE
         # Rileggo tasto, altrimenti interviene la primaria e devo premere un enter per proseguire
         read -s -t 1 -n 1 key
+    fi
+    # Modifica configurazione
+    if [[ $key == "m" ]]
+      then
+        clear
+        setterm --cursor on
+        # edit
+        mcedit $CFGFILE
+        setterm --cursor off
+        # Rileggo tasto, altrimenti interviene la primaria e devo premere un enter per proseguire
+        read -t 1 -n 1 key > /dev/null
+        source cronotermostato.conf
+        sleep 1
     fi
     ## Help
     # se "h" oppure un tasto non riconosciuto fra i precedenti e non e` "q" (quit)

@@ -15,6 +15,10 @@ sleep 3
 cecho.sh "1" "\nv"
 cecho.sh "0"    " visualizza    programmazione  odierna."
 sleep 3
+#               1234567890123456|234567890123456|234567890123456|
+cecho.sh "1" "\nm"
+cecho.sh "0"    " modifica la   configurazione."
+sleep 3
 
 #               1234567890123456|234567890123456|234567890123456|
 # Per qualche strano motivo, non funzionano tutti i i codici e la linea successiva non lampeggia ..
