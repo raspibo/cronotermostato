@@ -27,6 +27,8 @@
 # RH umidita`
 # KA rele`
 
+
+CFGFILE=cronotermostato.conf
 # Carico la configurazione
 # il lampeggio non funziona, per  qualche strano motivo legato a configurazioni di terminale
 cecho.sh "5" "Loading config .."
